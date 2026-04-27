@@ -1,0 +1,294 @@
+/* =========================================================
+   Choghadiya Tool Page — inherits panchang.css base
+   ========================================================= */
+
+/* ---------- Current muhurat banner ---------- */
+.bb-cgh-current {
+    text-align: center;
+    padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem);
+    border-radius: 16px;
+    margin: var(--bb-sp-3) 0 var(--bb-sp-4);
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+.bb-cgh-current::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='none' stroke-width='0.5' stroke-opacity='0.3'><circle cx='80' cy='80' r='75' stroke='%23ffffff'/><circle cx='80' cy='80' r='55' stroke='%23ffffff'/><circle cx='80' cy='80' r='35' stroke='%23ffffff'/></g></svg>") center/160px 160px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+.bb-cgh-current > * { position: relative; z-index: 1; }
+
+.bb-cgh-current__label {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: var(--bb-fs-xs);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+.bb-cgh-current__name {
+    margin: 0 0 0.25rem;
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    font-family: var(--bb-font-display, 'Philosopher', serif);
+}
+.bb-cgh-current__type {
+    margin: 0 0 0.75rem;
+    font-size: var(--bb-fs-base);
+    opacity: 0.9;
+}
+.bb-cgh-current__time {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    letter-spacing: 0.04em;
+}
+.bb-cgh-current__time strong { font-weight: 700; }
+.bb-cgh-current__vela {
+    margin: 0.75rem 0 0;
+    font-size: var(--bb-fs-sm);
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.bb-cgh-current--good {
+    background: linear-gradient(135deg, #b8870c, #d4a017);
+    border-color: var(--bb-gold-bright, #f5d35a);
+    color: #fff;
+}
+.bb-cgh-current--mid {
+    background: linear-gradient(135deg, #2d5f4f, #3a7a66);
+    border-color: #5fbfa0;
+    color: #fff;
+}
+.bb-cgh-current--bad {
+    background: linear-gradient(135deg, #7a1a35, #a82f2f);
+    border-color: #d64545;
+    color: #fff;
+}
+
+/* ---------- Choghadiya tile grid ---------- */
+.bb-cgh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--bb-sp-2, 0.75rem);
+    margin-bottom: var(--bb-sp-4);
+}
+
+.bb-cgh-tile {
+    position: relative;
+    padding: 1rem 0.75rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: #fff;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(46, 29, 31, 0.06);
+}
+.bb-cgh-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(46, 29, 31, 0.12);
+}
+
+.bb-cgh-tile__index {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--bb-muted, #8b6f72);
+    font-weight: 600;
+    width: 1.4rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+}
+.bb-cgh-tile__name {
+    margin: 0.25rem 0 0.25rem;
+    font-size: 1.25rem;
+    font-family: var(--bb-font-display, 'Philosopher', serif);
+    color: var(--bb-charcoal);
+}
+.bb-cgh-tile__type {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.75;
+}
+.bb-cgh-tile__time {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: var(--bb-charcoal);
+    font-weight: 500;
+}
+.bb-cgh-tile__vela {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--bb-sindoori-dark, #a82f2f);
+    font-weight: 600;
+}
+
+/* Type colors — left border accent + label color */
+.bb-cgh-tile.bb-cgh--good {
+    border-left: 4px solid var(--bb-gold, #d4a017);
+    background: linear-gradient(180deg, #fff8e8 0%, #ffffff 100%);
+}
+.bb-cgh-tile.bb-cgh--good .bb-cgh-tile__type { color: #b8870c; }
+
+.bb-cgh-tile.bb-cgh--mid {
+    border-left: 4px solid #3a7a66;
+    background: linear-gradient(180deg, #ecf7f2 0%, #ffffff 100%);
+}
+.bb-cgh-tile.bb-cgh--mid .bb-cgh-tile__type { color: #2d5f4f; }
+
+.bb-cgh-tile.bb-cgh--bad {
+    border-left: 4px solid var(--bb-sindoori, #d64545);
+    background: linear-gradient(180deg, #fbeaea 0%, #ffffff 100%);
+}
+.bb-cgh-tile.bb-cgh--bad .bb-cgh-tile__type { color: var(--bb-sindoori-dark, #a82f2f); }
+
+/* "NOW" highlight */
+.bb-cgh-tile--now {
+    border: 2px solid var(--bb-saffron, #e87629);
+    box-shadow: 0 0 0 4px rgba(232, 118, 41, 0.18), 0 4px 14px rgba(232, 118, 41, 0.25);
+    transform: scale(1.02);
+}
+.bb-cgh-tile__now-badge {
+    position: absolute;
+    top: -0.5rem;
+    right: 0.5rem;
+    background: var(--bb-saffron, #e87629);
+    color: #fff;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(232, 118, 41, 0.4);
+}
+
+/* ---------- Related card linking back to Panchang ---------- */
+.bb-cgh-related {
+    margin: var(--bb-sp-4) 0 var(--bb-sp-2);
+    text-align: center;
+}
+.bb-cgh-related .bb-eyebrow { display: block; margin-bottom: 0.75rem; }
+.bb-cgh-related-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(135deg, #fdf4ec 0%, #ffffff 100%);
+    border: 1.5px solid var(--bb-gold, #d4a017);
+    border-radius: 999px;
+    color: var(--bb-maroon, #7a1a35);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.bb-cgh-related-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(122, 26, 53, 0.15);
+    color: var(--bb-maroon, #7a1a35);
+}
+.bb-cgh-related-card__icon { font-size: 1.25rem; }
+.bb-cgh-related-card__arrow { color: var(--bb-saffron, #e87629); }
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 480px) {
+    .bb-cgh-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    .bb-cgh-tile {
+        padding: 0.85rem 0.5rem;
+    }
+    .bb-cgh-tile__name { font-size: 1.1rem; }
+    .bb-cgh-tile__time { font-size: 0.82rem; }
+}
+
+/* =========================================================
+   Hora — per-planet colors (Drik-style: each planet has its own visual identity)
+   ========================================================= */
+.bb-cgh-tile.bb-hora--sun {
+    background: linear-gradient(180deg, #b8431a 0%, #a8381a 100%);
+    border-left: 4px solid #7a1a0d;
+    color: #fff;
+}
+.bb-cgh-tile.bb-hora--sun .bb-cgh-tile__name,
+.bb-cgh-tile.bb-hora--sun .bb-cgh-tile__time { color: #fff; }
+.bb-cgh-tile.bb-hora--sun .bb-cgh-tile__type { color: #ffe5d0; }
+.bb-cgh-tile.bb-hora--sun .bb-cgh-tile__index { background: rgba(255,255,255,0.2); color: #fff; }
+
+.bb-cgh-tile.bb-hora--moon {
+    background: linear-gradient(180deg, #fbfbfb 0%, #f1eee8 100%);
+    border-left: 4px solid #c4b896;
+    color: var(--bb-charcoal);
+}
+.bb-cgh-tile.bb-hora--moon .bb-cgh-tile__type { color: #6b5a3e; font-weight: 700; }
+
+.bb-cgh-tile.bb-hora--mars {
+    background: linear-gradient(180deg, #8a2222 0%, #7a1c1c 100%);
+    border-left: 4px solid #4a0d0d;
+    color: #fff;
+}
+.bb-cgh-tile.bb-hora--mars .bb-cgh-tile__name,
+.bb-cgh-tile.bb-hora--mars .bb-cgh-tile__time { color: #fff; }
+.bb-cgh-tile.bb-hora--mars .bb-cgh-tile__type { color: #ffd0d0; }
+.bb-cgh-tile.bb-hora--mars .bb-cgh-tile__index { background: rgba(255,255,255,0.2); color: #fff; }
+
+.bb-cgh-tile.bb-hora--mercury {
+    background: linear-gradient(180deg, #2d7a4a 0%, #246a3e 100%);
+    border-left: 4px solid #154a2a;
+    color: #fff;
+}
+.bb-cgh-tile.bb-hora--mercury .bb-cgh-tile__name,
+.bb-cgh-tile.bb-hora--mercury .bb-cgh-tile__time { color: #fff; }
+.bb-cgh-tile.bb-hora--mercury .bb-cgh-tile__type { color: #d0f0dc; }
+.bb-cgh-tile.bb-hora--mercury .bb-cgh-tile__index { background: rgba(255,255,255,0.2); color: #fff; }
+
+.bb-cgh-tile.bb-hora--jupiter {
+    background: linear-gradient(180deg, #d4b817 0%, #c4a812 100%);
+    border-left: 4px solid #8a7505;
+    color: #2e1d1f;
+}
+.bb-cgh-tile.bb-hora--jupiter .bb-cgh-tile__type { color: #5a4a05; font-weight: 700; }
+.bb-cgh-tile.bb-hora--jupiter .bb-cgh-tile__index { background: rgba(0,0,0,0.12); }
+
+.bb-cgh-tile.bb-hora--venus {
+    background: linear-gradient(180deg, #fff5e8 0%, #ffeac8 100%);
+    border-left: 4px solid #d4a017;
+    color: var(--bb-charcoal);
+}
+.bb-cgh-tile.bb-hora--venus .bb-cgh-tile__type { color: #8a5a0a; font-weight: 700; }
+
+.bb-cgh-tile.bb-hora--saturn {
+    background: linear-gradient(180deg, #4a4a52 0%, #3a3a42 100%);
+    border-left: 4px solid #1a1a22;
+    color: #fff;
+}
+.bb-cgh-tile.bb-hora--saturn .bb-cgh-tile__name,
+.bb-cgh-tile.bb-hora--saturn .bb-cgh-tile__time { color: #fff; }
+.bb-cgh-tile.bb-hora--saturn .bb-cgh-tile__type { color: #c8c8d0; }
+.bb-cgh-tile.bb-hora--saturn .bb-cgh-tile__index { background: rgba(255,255,255,0.18); color: #fff; }
+
+/* Current Hora banner — reuse planet bg as banner color */
+.bb-hora-current.bb-hora--sun     { background: linear-gradient(135deg, #b8431a, #a8381a); border-color: #ffd0a8; color: #fff; }
+.bb-hora-current.bb-hora--moon    { background: linear-gradient(135deg, #ffffff, #f1eee8); border-color: #c4b896; color: var(--bb-charcoal); }
+.bb-hora-current.bb-hora--moon::before { opacity: 0.15; filter: invert(1); }
+.bb-hora-current.bb-hora--mars    { background: linear-gradient(135deg, #8a2222, #7a1c1c); border-color: #ff8888; color: #fff; }
+.bb-hora-current.bb-hora--mercury { background: linear-gradient(135deg, #2d7a4a, #246a3e); border-color: #6fbf90; color: #fff; }
+.bb-hora-current.bb-hora--jupiter { background: linear-gradient(135deg, #d4b817, #c4a812); border-color: #fff0a0; color: #2e1d1f; }
+.bb-hora-current.bb-hora--jupiter::before { opacity: 0.2; filter: invert(0.5); }
+.bb-hora-current.bb-hora--venus   { background: linear-gradient(135deg, #fff5e8, #ffeac8); border-color: #d4a017; color: var(--bb-charcoal); }
+.bb-hora-current.bb-hora--venus::before { opacity: 0.15; filter: invert(0.5); }
+.bb-hora-current.bb-hora--saturn  { background: linear-gradient(135deg, #4a4a52, #3a3a42); border-color: #8888a0; color: #fff; }

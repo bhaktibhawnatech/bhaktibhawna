@@ -1,0 +1,42 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backups
+*.bak
+*.tmp
+*.orig
+
+# Local secrets (NEVER commit)
+.env
+.env.local
+secrets.json
+**/wp-config.php
+**/wp-config-local.php
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Build artifacts
+node_modules/
+vendor/
+dist/
+
+# Swiss Ephemeris ephemeris data files (large binary, fetch separately)
+sweph/*.se1
+sweph/swetest
+
+# Local sync helpers
+_pull/
+.tmp/

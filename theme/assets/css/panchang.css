@@ -1,0 +1,456 @@
+/* =========================================================
+   Panchang Tool Page — Drik-style depth
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+.bb-panchang-hero {
+    background:
+        linear-gradient(135deg, rgba(122, 26, 53, 0.95) 0%, rgba(168, 47, 47, 0.92) 100%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%23f5d35a' stroke-width='0.6' stroke-opacity='0.18'><circle cx='100' cy='100' r='95'/><circle cx='100' cy='100' r='75'/><circle cx='100' cy='100' r='55'/><circle cx='100' cy='100' r='35'/><circle cx='100' cy='100' r='15'/></g></svg>");
+    background-size: cover, 200px 200px;
+    color: #fff;
+    padding-block: clamp(2rem, 4vw, 3.5rem);
+    text-align: center;
+    border-bottom: 4px solid var(--bb-gold);
+}
+.bb-panchang-hero__inner { max-width: 720px; margin-inline: auto; }
+.bb-panchang-hero .bb-eyebrow { color: var(--bb-gold-bright); }
+.bb-panchang-hero__title {
+    color: #fff;
+    margin: 0.5rem 0 0.5rem;
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+}
+.bb-panchang-hero__title .bb-devanagari {
+    display: block;
+    color: var(--bb-gold-bright);
+    font-size: 0.7em;
+    margin-bottom: 0.2em;
+    font-weight: 400;
+}
+.bb-panchang-hero__sub {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--bb-fs-base);
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+/* ---------- Section heads (used between groups) ---------- */
+.bb-panchang-section-head {
+    text-align: center;
+    margin: var(--bb-sp-5) 0 var(--bb-sp-3);
+}
+.bb-panchang-section-head:first-child { margin-top: var(--bb-sp-2); }
+.bb-panchang-section-head h2 {
+    margin: 0.25rem 0 0.5rem;
+    color: var(--bb-charcoal);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+}
+.bb-panchang-section-head .bb-eyebrow {
+    font-size: var(--bb-fs-xs);
+    letter-spacing: 0.16em;
+}
+
+/* ====== 5 Panchang Tiles ====== */
+.bb-panchang-grid {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: 1fr;
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 640px)  { .bb-panchang-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px)  { .bb-panchang-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .bb-panchang-grid { grid-template-columns: repeat(5, 1fr); } }
+
+.bb-panchang-tile {
+    background: #fff;
+    border: 1px solid var(--bb-line);
+    border-radius: var(--bb-r);
+    padding: var(--bb-sp-3) var(--bb-sp-2);
+    text-align: center;
+    position: relative;
+    transition: transform var(--bb-dur) var(--bb-ease), box-shadow var(--bb-dur) var(--bb-ease);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.bb-panchang-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--bb-shadow-lg);
+    border-color: var(--bb-gold);
+}
+.bb-panchang-tile::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bb-saffron), var(--bb-gold), var(--bb-sindoori));
+}
+
+.bb-panchang-tile__label {
+    font-family: var(--bb-font-body);
+    font-size: var(--bb-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bb-saffron);
+    margin-top: 0.25rem;
+}
+.bb-panchang-tile__value {
+    font-family: var(--bb-font-display);
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    color: var(--bb-maroon);
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.15;
+}
+.bb-panchang-tile__meta {
+    font-size: var(--bb-fs-sm);
+    color: var(--bb-charcoal-soft);
+    line-height: 1.5;
+}
+.bb-panchang-tile__meta strong {
+    color: var(--bb-charcoal);
+    font-weight: 700;
+}
+.bb-panchang-tile__next {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--bb-line);
+    font-size: var(--bb-fs-xs);
+    color: var(--bb-muted);
+    font-style: italic;
+}
+
+/* ====== Sun & Moon ====== */
+.bb-celestial-grid {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 768px) { .bb-celestial-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.bb-celestial-fact {
+    text-align: center;
+    padding: var(--bb-sp-3) var(--bb-sp-2);
+    background: linear-gradient(180deg, var(--bb-ivory) 0%, var(--bb-cream-warm) 100%);
+    border-radius: var(--bb-r);
+    border: 1px solid var(--bb-line);
+    transition: all var(--bb-dur) var(--bb-ease);
+}
+.bb-celestial-fact:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bb-shadow);
+    border-color: var(--bb-gold);
+}
+.bb-celestial-fact__icon { font-size: 2rem; display: block; margin-bottom: 0.4rem; line-height: 1; }
+.bb-celestial-fact__label {
+    display: block;
+    font-size: var(--bb-fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bb-muted);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+.bb-celestial-fact__value {
+    display: block;
+    font-family: var(--bb-font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--bb-maroon);
+    font-weight: 700;
+}
+
+/* ====== Muhurat lists ====== */
+.bb-muhurat-grid {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: 1fr;
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 640px) { .bb-muhurat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .bb-muhurat-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.bb-muhurat-item {
+    border-radius: var(--bb-r);
+    padding: var(--bb-sp-3);
+    border: 1px solid var(--bb-line);
+    background: #fff;
+    transition: all var(--bb-dur) var(--bb-ease);
+    position: relative;
+    overflow: hidden;
+}
+.bb-muhurat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bb-shadow-lg);
+}
+.bb-muhurat-item--good {
+    background: linear-gradient(180deg, #fff 0%, rgba(212, 160, 23, 0.05) 100%);
+    border-left: 4px solid var(--bb-gold);
+}
+.bb-muhurat-item--bad {
+    background: linear-gradient(180deg, #fff 0%, rgba(214, 69, 69, 0.05) 100%);
+    border-left: 4px solid var(--bb-sindoori);
+}
+
+.bb-muhurat-item__head {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+.bb-muhurat-item__icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.bb-muhurat-item__name {
+    font-family: var(--bb-font-display);
+    font-size: var(--bb-fs-lg);
+    color: var(--bb-charcoal);
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+}
+.bb-muhurat-item__hindi {
+    display: block;
+    font-size: var(--bb-fs-sm);
+    color: var(--bb-muted);
+    margin-top: 0.15rem;
+}
+.bb-muhurat-item--good .bb-muhurat-item__name { color: var(--bb-maroon); }
+.bb-muhurat-item--bad .bb-muhurat-item__name  { color: var(--bb-sindoori-dark); }
+
+.bb-muhurat-item__times {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--bb-line);
+}
+.bb-muhurat-item__time {
+    font-size: var(--bb-fs-base);
+    color: var(--bb-charcoal-soft);
+    font-family: var(--bb-font-body);
+}
+.bb-muhurat-item__time strong {
+    color: var(--bb-charcoal);
+    font-weight: 700;
+}
+
+/* ====== Toolbar (city + date nav) ====== */
+.bb-toolbar {
+    background: var(--bb-cream);
+    border-bottom: 1px solid var(--bb-line);
+    padding-block: var(--bb-sp-2);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(46, 29, 31, 0.05);
+}
+.bb-toolbar__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.bb-toolbar__city, .bb-toolbar__date, .bb-toolbar__date-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.bb-toolbar__city { flex: 1; min-width: 180px; }
+.bb-toolbar__date { flex-wrap: wrap; gap: 0.4rem; }
+.bb-toolbar__label { font-size: 1.1rem; }
+.bb-toolbar__select,
+.bb-toolbar__date-input {
+    padding: 0.5rem 0.75rem;
+    background: #fff;
+    border: 1px solid var(--bb-line);
+    border-radius: var(--bb-r-sm);
+    font-family: var(--bb-font-body);
+    font-size: var(--bb-fs-sm);
+    color: var(--bb-charcoal);
+    cursor: pointer;
+    transition: border-color var(--bb-dur) var(--bb-ease);
+    min-height: 40px;
+}
+.bb-toolbar__select { flex: 1; min-width: 160px; max-width: 260px; }
+.bb-toolbar__select:focus,
+.bb-toolbar__date-input:focus { border-color: var(--bb-gold); outline: none; }
+
+.bb-toolbar__nav-btn,
+.bb-toolbar__today-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0.85rem;
+    background: #fff;
+    border: 1px solid var(--bb-line);
+    border-radius: var(--bb-r-sm);
+    color: var(--bb-charcoal);
+    font-size: var(--bb-fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--bb-dur) var(--bb-ease);
+    min-height: 40px;
+}
+.bb-toolbar__nav-btn:hover,
+.bb-toolbar__today-btn:hover {
+    border-color: var(--bb-gold);
+    color: var(--bb-maroon);
+    background: var(--bb-cream-warm);
+}
+.bb-toolbar__today-btn {
+    background: var(--bb-saffron);
+    color: #fff;
+    border-color: var(--bb-saffron);
+}
+.bb-toolbar__today-btn:hover {
+    background: var(--bb-saffron-dark);
+    color: #fff;
+    border-color: var(--bb-saffron-dark);
+}
+@media (max-width: 640px) {
+    .bb-toolbar__nav-text { display: none; }
+    .bb-toolbar__nav-btn { padding: 0.5rem 0.7rem; font-size: 1.1rem; }
+}
+
+/* ====== Duration grid ====== */
+.bb-duration-grid {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 640px) { .bb-duration-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ====== Samvat / Hindu calendar grid ====== */
+.bb-samvat-grid {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: 1fr;
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 640px)  { .bb-samvat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .bb-samvat-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.bb-samvat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: var(--bb-sp-3);
+    background: linear-gradient(180deg, var(--bb-ivory) 0%, var(--bb-cream-warm) 100%);
+    border: 1px solid var(--bb-line);
+    border-radius: var(--bb-r);
+    transition: all var(--bb-dur) var(--bb-ease);
+}
+.bb-samvat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bb-shadow);
+    border-color: var(--bb-gold);
+}
+.bb-samvat-item__label {
+    font-size: var(--bb-fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bb-saffron);
+    font-weight: 700;
+}
+.bb-samvat-item__value {
+    font-family: var(--bb-font-display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--bb-maroon);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ====== Bala (Chandra Bala / Tara Bala) ====== */
+.bb-bala-list {
+    display: grid;
+    gap: var(--bb-sp-2);
+    grid-template-columns: 1fr;
+    margin-bottom: var(--bb-sp-4);
+}
+@media (min-width: 768px) { .bb-bala-list { grid-template-columns: repeat(2, 1fr); } }
+
+.bb-bala-period {
+    background: linear-gradient(180deg, #fff 0%, var(--bb-ivory) 100%);
+    border: 1px solid var(--bb-line);
+    border-left: 4px solid var(--bb-gold);
+    border-radius: var(--bb-r);
+    padding: var(--bb-sp-3);
+    transition: all var(--bb-dur) var(--bb-ease);
+}
+.bb-bala-period:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--bb-shadow);
+}
+.bb-bala-period--good { border-left-color: #10a070; }
+.bb-bala-period--bad  { border-left-color: var(--bb-sindoori); }
+.bb-bala-period--mid  { border-left-color: var(--bb-gold); }
+
+.bb-bala-period__time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--bb-line);
+}
+.bb-bala-period__name {
+    font-family: var(--bb-font-display);
+    color: var(--bb-maroon);
+    font-weight: 700;
+    font-size: var(--bb-fs-base);
+}
+.bb-bala-period__until {
+    color: var(--bb-muted);
+    font-size: var(--bb-fs-sm);
+}
+.bb-bala-period__time strong {
+    color: var(--bb-charcoal);
+    font-size: var(--bb-fs-base);
+    font-weight: 700;
+}
+
+.bb-bala-period__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+.bb-bala-chip {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    background: var(--bb-cream-warm);
+    color: var(--bb-charcoal);
+    border-radius: var(--bb-r-pill);
+    font-size: var(--bb-fs-sm);
+    font-weight: 500;
+    border: 1px solid var(--bb-line);
+}
+
+/* ====== About block (SEO content) ====== */
+.bb-panchang-about {
+    margin-top: var(--bb-sp-5);
+    padding: var(--bb-sp-4);
+    background: var(--bb-ivory);
+    border-radius: var(--bb-r-lg);
+    border: 1px dashed var(--bb-gold);
+    max-width: 900px;
+    margin-inline: auto;
+}
+.bb-panchang-about h2 {
+    color: var(--bb-maroon);
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: var(--bb-sp-2);
+}
+.bb-panchang-about p {
+    color: var(--bb-charcoal-soft);
+    line-height: 1.85;
+    font-size: var(--bb-fs-base);
+    margin: 0;
+}

@@ -1,0 +1,304 @@
+/* =========================================================
+   Bhakti Bhawna — Brand System & Global Styles
+   v2 — temple-devotional, photography-forward
+   Mobile-first. Trilingual (hi/en/mr).
+   ========================================================= */
+
+/* ---------- Design Tokens ---------- */
+:root {
+    /* Brand palette — v3, richer & punchier (fixes "fade" feel) */
+    --bb-saffron:       #E55A14;   /* deeper, more vermillion-leaning saffron */
+    --bb-saffron-dark:  #B84410;
+    --bb-saffron-soft:  #F2A476;
+
+    --bb-sindoori:      #C72A2A;   /* deeper sindoor red */
+    --bb-sindoori-dark: #9A1F1F;
+    --bb-sindoori-soft: #ECA5A5;
+
+    --bb-vermillion:    #C8102E;   /* punch accent — for "Live", "Now", "Aaj ka Muhurat" */
+
+    --bb-maroon:        #7A1A35;   /* deep devotional maroon — kept */
+    --bb-maroon-dark:   #5A1026;
+
+    --bb-gold:          #E0AC10;   /* brighter, more luminous divine gold */
+    --bb-gold-soft:     #F0CB54;
+    --bb-gold-bright:   #FCDF60;
+
+    --bb-sage:          #B5C0A3;   /* tulsi green — utility only */
+
+    --bb-cream:         #FBE5C5;   /* WARMER marigold-cream (was #FDF4EC pale off-white) */
+    --bb-cream-warm:    #F6CE94;   /* richer blush */
+    --bb-ivory:         #FFF6E1;
+
+    --bb-charcoal:      #2A171A;   /* slightly deeper warm near-black */
+    --bb-charcoal-soft: #4A3235;
+    --bb-muted:         #7A5E62;
+    --bb-line:          #E7C99F;
+
+    /* Type */
+    --bb-font-devanagari: "Tiro Devanagari Hindi", "Noto Serif Devanagari", serif;
+    --bb-font-display:    "DM Sans", system-ui, sans-serif;
+    --bb-font-body:       "DM Sans", system-ui, sans-serif;
+
+    /* Scale — fluid via clamp() */
+    --bb-fs-xs:   clamp(0.80rem, 0.76rem + 0.2vw, 0.875rem);
+    --bb-fs-sm:   clamp(0.88rem, 0.84rem + 0.2vw, 0.95rem);
+    --bb-fs-base: clamp(1.00rem, 0.95rem + 0.2vw, 1.10rem);
+    --bb-fs-lg:   clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+    --bb-fs-xl:   clamp(1.35rem, 1.15rem + 1vw,   1.75rem);
+    --bb-fs-2xl:  clamp(1.75rem, 1.40rem + 1.75vw, 2.50rem);
+    --bb-fs-3xl:  clamp(2.20rem, 1.70rem + 2.5vw,  3.50rem);
+    --bb-fs-4xl:  clamp(2.80rem, 2.10rem + 3.2vw,  4.50rem);
+
+    /* Spacing — 8px base */
+    --bb-sp-1: 0.5rem;
+    --bb-sp-2: 1rem;
+    --bb-sp-3: 1.5rem;
+    --bb-sp-4: 2rem;
+    --bb-sp-5: 3rem;
+    --bb-sp-6: 4rem;
+    --bb-sp-7: 6rem;
+
+    /* Container — wider, tighter side gutter */
+    --bb-container-max: 1440px;
+    --bb-container-pad: clamp(0.75rem, 2vw, 1.25rem);
+
+    /* Radius */
+    --bb-r-sm: 8px;
+    --bb-r:    16px;
+    --bb-r-lg: 24px;
+    --bb-r-pill: 999px;
+
+    /* Shadow */
+    --bb-shadow-sm: 0 1px 2px rgba(46, 29, 31, 0.06), 0 1px 3px rgba(46, 29, 31, 0.08);
+    --bb-shadow:    0 4px 10px rgba(46, 29, 31, 0.09), 0 2px 4px rgba(46, 29, 31, 0.06);
+    --bb-shadow-lg: 0 20px 40px rgba(46, 29, 31, 0.14), 0 8px 16px rgba(46, 29, 31, 0.08);
+    --bb-shadow-gold: 0 6px 20px rgba(212, 160, 23, 0.25);
+
+    /* Motion */
+    --bb-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --bb-dur: 240ms;
+}
+
+/* ---------- Reset / Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--bb-font-body);
+    font-size: var(--bb-fs-base);
+    line-height: 1.7;
+    color: var(--bb-charcoal);
+    background: var(--bb-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+a {
+    color: var(--bb-sindoori-dark);
+    text-decoration: none;
+    transition: color var(--bb-dur) var(--bb-ease);
+}
+a:hover { color: var(--bb-maroon); }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--bb-font-display);
+    color: var(--bb-charcoal);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--bb-sp-2);
+    font-weight: 700;
+}
+h1 { font-size: var(--bb-fs-3xl); }
+h2 { font-size: var(--bb-fs-2xl); }
+h3 { font-size: var(--bb-fs-xl); }
+h4 { font-size: var(--bb-fs-lg); }
+
+p { margin: 0 0 var(--bb-sp-2); }
+
+:lang(hi), :lang(mr),
+.bb-devanagari {
+    font-family: var(--bb-font-devanagari);
+    line-height: 1.75;
+}
+
+/* ---------- Layout primitives ---------- */
+.bb-container {
+    max-width: var(--bb-container-max);
+    margin-inline: auto;
+    padding-inline: var(--bb-container-pad);
+}
+
+.bb-section {
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.bb-section--tight { padding-block: clamp(2rem, 4vw, 3rem); }
+
+/* ---------- Mandala SVG divider (reusable) ---------- */
+.bb-mandala-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: var(--bb-sp-2) auto;
+    color: var(--bb-gold);
+}
+.bb-mandala-divider::before,
+.bb-mandala-divider::after {
+    content: "";
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor 50%, transparent);
+}
+.bb-mandala-divider__icon {
+    width: 24px; height: 24px;
+}
+
+/* ---------- Buttons ---------- */
+.bb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.8rem 1.6rem;
+    font-family: var(--bb-font-body);
+    font-size: var(--bb-fs-base);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border: 2px solid transparent;
+    border-radius: var(--bb-r-pill);
+    cursor: pointer;
+    transition: transform var(--bb-dur) var(--bb-ease),
+                background-color var(--bb-dur) var(--bb-ease),
+                box-shadow var(--bb-dur) var(--bb-ease);
+    white-space: nowrap;
+}
+.bb-btn:active { transform: translateY(1px); }
+.bb-btn:focus-visible {
+    outline: 3px solid var(--bb-gold-soft);
+    outline-offset: 2px;
+}
+
+.bb-btn--primary {
+    background: var(--bb-saffron);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(232, 118, 41, 0.35);
+}
+.bb-btn--primary:hover { background: var(--bb-saffron-dark); color: #fff; }
+
+.bb-btn--maroon {
+    background: var(--bb-maroon);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(122, 26, 53, 0.35);
+}
+.bb-btn--maroon:hover { background: var(--bb-maroon-dark); color: #fff; }
+
+.bb-btn--gold {
+    background: var(--bb-gold);
+    color: var(--bb-charcoal);
+    box-shadow: var(--bb-shadow-gold);
+}
+.bb-btn--gold:hover { background: var(--bb-gold-bright); color: var(--bb-charcoal); }
+
+.bb-btn--ghost {
+    background: rgba(255, 251, 242, 0.8);
+    color: var(--bb-maroon);
+    border-color: var(--bb-maroon);
+    backdrop-filter: blur(8px);
+}
+.bb-btn--ghost:hover { background: var(--bb-maroon); color: #fff; }
+
+.bb-btn--white {
+    background: #fff;
+    color: var(--bb-maroon);
+}
+.bb-btn--white:hover { background: var(--bb-gold-soft); color: var(--bb-charcoal); }
+
+/* ---------- Card base ---------- */
+.bb-card {
+    background: #fff;
+    border: 1px solid var(--bb-line);
+    border-radius: var(--bb-r);
+    overflow: hidden;
+    transition: transform var(--bb-dur) var(--bb-ease), box-shadow var(--bb-dur) var(--bb-ease);
+    position: relative;
+}
+.bb-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--bb-shadow-lg);
+}
+
+/* Gold corner ornament — medium ornamentation */
+.bb-card--ornate::before,
+.bb-card--ornate::after {
+    content: "";
+    position: absolute;
+    width: 18px; height: 18px;
+    border: 2px solid var(--bb-gold);
+    pointer-events: none;
+    z-index: 2;
+}
+.bb-card--ornate::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.bb-card--ornate::after  { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+/* ---------- Utility ---------- */
+.bb-eyebrow {
+    display: inline-block;
+    font-size: var(--bb-fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bb-saffron);
+    margin-bottom: var(--bb-sp-1);
+}
+
+.bb-lede {
+    font-size: var(--bb-fs-lg);
+    color: var(--bb-charcoal-soft);
+    max-width: 60ch;
+}
+
+.bb-center-text { text-align: center; }
+.bb-mx-auto    { margin-inline: auto; }
+
+.bb-hide-mobile { display: none; }
+@media (min-width: 1024px) { .bb-hide-mobile { display: initial; } .bb-hide-desktop { display: none; } }
+
+/* ---------- Accessibility ---------- */
+.screen-reader-text {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px; height: 1px;
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Section head ---------- */
+.bb-section-head {
+    text-align: center;
+    margin-bottom: var(--bb-sp-4);
+}
+.bb-section-head h2 { margin-bottom: var(--bb-sp-1); }
+.bb-section-head p {
+    max-width: 58ch; margin: 0.5rem auto 0;
+    color: var(--bb-charcoal-soft);
+    font-size: var(--bb-fs-lg);
+}
