@@ -6,7 +6,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'BB_VER', '2.11.0' );
+define( 'BB_VER', '2.12.0' );
 define( 'BB_DIR', get_stylesheet_directory() );
 define( 'BB_URI', get_stylesheet_directory_uri() );
 
@@ -23,6 +23,8 @@ add_action( 'after_setup_theme', function () {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'html5', array( 'search-form', 'comment-form', 'gallery', 'caption', 'script', 'style' ) );
     add_theme_support( 'responsive-embeds' );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'align-wide' );
     add_theme_support( 'custom-logo', array(
         'height'      => 80,
         'width'       => 300,
