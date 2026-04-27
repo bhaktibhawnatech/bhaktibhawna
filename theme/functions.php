@@ -6,7 +6,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'BB_VER', '2.10.0' );
+define( 'BB_VER', '2.11.0' );
 define( 'BB_DIR', get_stylesheet_directory() );
 define( 'BB_URI', get_stylesheet_directory_uri() );
 

@@ -153,8 +153,8 @@ $api_args = array(
 );
 $panchang     = BB_Astro::panchang( $api_args );
 $ritu         = BB_Astro::ritu( $api_args );
-$chandra_bala = null;  // not yet ported from ProKerala — section degrades gracefully
-$tara_bala    = null;
+$chandra_bala = BB_Astro::chandra_bala( $api_args );
+$tara_bala    = BB_Astro::tara_bala( $api_args );
 
 get_header();
 

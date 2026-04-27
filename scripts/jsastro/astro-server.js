@@ -16,17 +16,20 @@ import { getSwe } from "./lib/swe-init.js";
 import { computeHora } from "./lib/hora.js";
 import { computeChoghadiya } from "./lib/choghadiya.js";
 import { computePanchang, computeRitu } from "./lib/panchang.js";
+import { computeChandraBala, computeTaraBala } from "./lib/balas.js";
 
 const HOST = "127.0.0.1";
 const PORT = parseInt(process.env.BB_ASTRO_PORT || "8917", 10);
-const VERSION = "0.2.0";
+const VERSION = "0.3.0";
 const STARTED_AT = Date.now();
 
 const ROUTES = {
-  "/hora":       computeHora,
-  "/choghadiya": computeChoghadiya,
-  "/panchang":   computePanchang,
-  "/ritu":       computeRitu,
+  "/hora":         computeHora,
+  "/choghadiya":   computeChoghadiya,
+  "/panchang":     computePanchang,
+  "/ritu":         computeRitu,
+  "/chandra-bala": computeChandraBala,
+  "/tara-bala":    computeTaraBala,
 };
 
 console.log(`[bb-astro] booting v${VERSION} pid=${process.pid}`);

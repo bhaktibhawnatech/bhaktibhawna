@@ -120,6 +120,22 @@ class BB_Astro {
         return self::call( '/ritu', self::normalize_args( $args ), WEEK_IN_SECONDS );
     }
 
+    /**
+     * Chandra Bala — favorable Janma Rashis for current Moon position.
+     * Shape: { chandra_bala: [ { end, rasis:[{name}, ...] } ] }
+     */
+    public static function chandra_bala( $args = array() ) {
+        return self::call( '/chandra-bala', self::normalize_args( $args ) );
+    }
+
+    /**
+     * Tara Bala — 9 Taras × 3 Janma Nakshatras each.
+     * Shape: { tara_bala: [ { name, type, end, nakshatras:[{name}, ...] }, …9 ] }
+     */
+    public static function tara_bala( $args = array() ) {
+        return self::call( '/tara-bala', self::normalize_args( $args ) );
+    }
+
     /** Daemon health check — useful for admin / debugging. */
     public static function health() {
         $resp = wp_remote_get( self::ENDPOINT . '/health', array( 'timeout' => 2 ) );
