@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""Convert white-bg logo to transparent + resize + save as PNG and WebP."""
+"""Convert white-bg logo to transparent + resize + save as PNG and WebP.
+
+Usage: python optimize_logo.py <input.png> [output_dir]
+"""
 from PIL import Image, ImageDraw
 import os, sys
 
-src = "/Users/naveensharma/Downloads/newlogobb.png"
-out_png  = "/tmp/bb-logo.png"
-out_webp = "/tmp/bb-logo.webp"
+if len(sys.argv) < 2:
+    print(__doc__, file=sys.stderr)
+    sys.exit(1)
+src = sys.argv[1]
+out_dir = sys.argv[2] if len(sys.argv) > 2 else "/tmp"
+out_png  = os.path.join(out_dir, "bb-logo.png")
+out_webp = os.path.join(out_dir, "bb-logo.webp")
 
 im = Image.open(src).convert("RGBA")
 print(f"loaded: {im.size}")
