@@ -164,12 +164,9 @@ $api_args = array(
     'bb_lang' => 'en',
     'date' => $current_date_str,
 );
-$choghadiya = BB_Prokerala_API::choghadiya( $api_args );
-
-/* Sun timings for the day/night section headers */
-$panchang = BB_Prokerala_API::panchang( $api_args );
-$sunrise  = $panchang['sunrise']  ?? null;
-$sunset   = $panchang['sunset']   ?? null;
+$choghadiya = BB_Astro::choghadiya( $api_args );
+$sunrise    = $choghadiya['sunrise'] ?? null;
+$sunset     = $choghadiya['sunset']  ?? null;
 
 get_header();
 

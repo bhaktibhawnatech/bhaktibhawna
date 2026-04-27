@@ -63,6 +63,7 @@
                     <li><a href="<?php echo esc_url( home_url( '/write-for-us/' ) ); ?>"><?php bb_t( array( 'en' => 'Write for Us', 'hi' => 'हमारे लिए लिखें', 'mr' => 'आमच्यासाठी लिहा', 'gu' => 'અમારા માટે લખો' ) ); ?></a></li>
                     <li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>"><?php bb_t( array( 'en' => 'Privacy', 'hi' => 'गोपनीयता', 'mr' => 'गोपनीयता', 'gu' => 'ગોપનીયતા' ) ); ?></a></li>
                     <li><a href="<?php echo esc_url( home_url( '/terms-of-service/' ) ); ?>"><?php bb_t( array( 'en' => 'Terms', 'hi' => 'शर्तें', 'mr' => 'अटी', 'gu' => 'શરતો' ) ); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/open-source/' ) ); ?>"><?php bb_t( array( 'en' => 'Open Source', 'hi' => 'ओपन सोर्स', 'mr' => 'ओपन सोर्स', 'gu' => 'ઓપન સોર્સ' ) ); ?></a></li>
                 </ul>
             </div>
         </div>

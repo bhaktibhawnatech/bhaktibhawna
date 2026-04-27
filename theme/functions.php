@@ -6,12 +6,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'BB_VER', '2.8.0' );
+define( 'BB_VER', '2.10.0' );
 define( 'BB_DIR', get_stylesheet_directory() );
 define( 'BB_URI', get_stylesheet_directory_uri() );
 
 /* Load tool classes & helpers */
 require_once BB_DIR . '/tools/class-prokerala-api.php';
+require_once BB_DIR . '/tools/class-bb-astro.php';
 require_once BB_DIR . '/tools/helpers.php';
 
 /* -----------------------------------------------------------------------

@@ -1,0 +1,44 @@
+Bhakti Bhawna — astrology + devotional content platform
+Copyright (C) 2026  Bhakti Bhawna / MaxGrowth Agency
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.  See LICENSE.
+
+================================================================
+Third-party components
+================================================================
+
+Swiss Ephemeris  (planetary position library)
+    Copyright (C) Astrodienst AG, Zurich, Switzerland
+    Licensed under GNU Affero General Public License v3.0
+    Upstream: https://github.com/aloistr/swisseph
+    Used via: swisseph-wasm npm package
+              https://github.com/prolaxu/swisseph-wasm
+
+SunCalc  (sunrise/sunset reference, currently unused at runtime)
+    Copyright (C) Vladimir Agafonkin
+    Licensed under BSD-2-Clause
+    Upstream: https://github.com/mourner/suncalc
+
+Astronomia  (formerly used for ayanamsa precision experiments)
+    Copyright (C) Sonia Keys
+    Licensed under MIT
+    Upstream: https://github.com/commenthol/astronomia
+
+WordPress core
+    Copyright (C) WordPress Foundation
+    Licensed under GPL-2.0-or-later
+
+================================================================
+Source code disclosure
+================================================================
+
+In compliance with AGPL Section 13 (network use), the complete
+corresponding source code for the version of this software that
+serves https://bhaktibhawna.com is publicly available at:
+
+    https://github.com/bhaktibhawnatech/bhaktibhawna
+
+A "View source" link is provided in the site footer.

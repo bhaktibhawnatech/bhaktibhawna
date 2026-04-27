@@ -1,0 +1,11 @@
+{
+  "name": "bb-jsastro",
+  "version": "0.1.0",
+  "description": "Bhakti Bhawna astro calculations (Swiss Ephemeris via WASM + iterative sun/moon rise-set)",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "suncalc": "^1.9.0",
+    "swisseph-wasm": "^0.0.5"
+  }
+}

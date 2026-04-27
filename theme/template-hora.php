@@ -157,10 +157,9 @@ $api_args = array(
     'bb_lang' => 'en',
     'date' => $current_date_str,
 );
-$hora     = BB_Prokerala_API::hora( $api_args );
-$panchang = BB_Prokerala_API::panchang( $api_args );
-$sunrise  = $panchang['sunrise']  ?? null;
-$sunset   = $panchang['sunset']   ?? null;
+$hora     = BB_Astro::hora( $api_args );
+$sunrise  = $hora['sunrise'] ?? null;
+$sunset   = $hora['sunset']  ?? null;
 
 get_header();
 

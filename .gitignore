@@ -40,3 +40,7 @@ sweph/swetest
 # Local sync helpers
 _pull/
 .tmp/
+
+# Astro daemon runtime files
+scripts/jsastro/astro-server.pid
+scripts/jsastro/astro-server.log

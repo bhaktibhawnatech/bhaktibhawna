@@ -151,10 +151,10 @@ $api_args = array(
     'lat' => $lat, 'lng' => $lng, 'tz' => $tz, 'bb_lang' => $lang,
     'date' => $current_date_str,
 );
-$panchang     = BB_Prokerala_API::panchang( $api_args );
-$ritu         = BB_Prokerala_API::ritu( $api_args );
-$chandra_bala = BB_Prokerala_API::chandra_bala( $api_args );
-$tara_bala    = BB_Prokerala_API::tara_bala( $api_args );
+$panchang     = BB_Astro::panchang( $api_args );
+$ritu         = BB_Astro::ritu( $api_args );
+$chandra_bala = null;  // not yet ported from ProKerala — section degrades gracefully
+$tara_bala    = null;
 
 get_header();
 
