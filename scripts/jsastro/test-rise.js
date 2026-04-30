@@ -2,10 +2,15 @@
 // Expected (per drikpanchang Delhi): sunrise ~05:48 IST, sunset ~18:54 IST.
 
 import SwissEph from "swisseph-wasm";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EPHE_PATH = process.env.SWEPH_EPHE_PATH || resolve(__dirname, "../src/ephe");
 
 const swe = new SwissEph();
 await swe.initSwissEph();
-swe.set_ephe_path("/home/u970630969/sweph/src/ephe");
+swe.set_ephe_path(EPHE_PATH);
 
 // Delhi
 const LAT = 28.6139, LNG = 77.2090, ALT = 0;

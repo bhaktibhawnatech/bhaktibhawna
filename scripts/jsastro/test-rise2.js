@@ -1,5 +1,11 @@
 // Try the EXACT params from the bundled demo first, to confirm rise_trans works at all.
 import SwissEph from "swisseph-wasm";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EPHE_PATH = process.env.SWEPH_EPHE_PATH || resolve(__dirname, "../src/ephe");
+
 const swe = new SwissEph();
 await swe.initSwissEph();
 
@@ -8,7 +14,7 @@ const r1 = swe.rise_trans(2460218.5, 0, -0.1278, 51.5074, 0, 1);
 console.log("  result:", r1, r1 ? `JD=${r1[0]}` : "null");
 
 // Set ephe path AFTER init
-swe.set_ephe_path("/home/u970630969/sweph/src/ephe");
+swe.set_ephe_path(EPHE_PATH);
 console.log("\nTest 2 — same params, after set_ephe_path");
 const r2 = swe.rise_trans(2460218.5, 0, -0.1278, 51.5074, 0, 1);
 console.log("  result:", r2, r2 ? `JD=${r2[0]}` : "null");

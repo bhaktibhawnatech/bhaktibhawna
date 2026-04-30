@@ -10,8 +10,8 @@ set -u
 
 HOST=127.0.0.1
 PORT=8917
-NODE=/opt/alt/alt-nodejs22/root/usr/bin/node
-APP_DIR=/home/u970630969/sweph/jsastro
+NODE="${BB_ASTRO_NODE:-/opt/alt/alt-nodejs22/root/usr/bin/node}"
+APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PID_FILE="$APP_DIR/astro-server.pid"
 LOG_FILE="$APP_DIR/astro-server.log"
 

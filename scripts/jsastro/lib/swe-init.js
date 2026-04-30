@@ -3,8 +3,11 @@
 // this server. Lahiri is locked per locked design decisions.
 
 import SwissEph from "swisseph-wasm";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
 
-const EPHE_PATH = "/home/u970630969/sweph/src/ephe";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EPHE_PATH = process.env.SWEPH_EPHE_PATH || resolve(__dirname, "../../src/ephe");
 
 let _swe = null;
 

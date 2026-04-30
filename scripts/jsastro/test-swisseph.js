@@ -3,12 +3,17 @@
 // to confirm output matches drikpanchang/ProKerala class of accuracy.
 
 import SwissEph from "swisseph-wasm";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EPHE_PATH = process.env.SWEPH_EPHE_PATH || resolve(__dirname, "../src/ephe");
 
 const swe = new SwissEph();
 await swe.initSwissEph();
 
-// Use Swiss Ephemeris mode (most accurate). Files at ~/sweph/src/ephe.
-swe.set_ephe_path("/home/u970630969/sweph/src/ephe");
+// Use Swiss Ephemeris mode (most accurate).
+swe.set_ephe_path(EPHE_PATH);
 swe.set_sid_mode(swe.SE_SIDM_LAHIRI, 0, 0);
 
 const FLAGS  = swe.SEFLG_SWIEPH;

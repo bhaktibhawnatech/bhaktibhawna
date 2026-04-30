@@ -5,9 +5,10 @@
  * Architecture: a Node daemon at 127.0.0.1:8917 owns the SwissEph WASM
  * (loaded once at startup, ~128MB resident). PHP calls it via HTTP.
  *
- * Daemon: /home/u970630969/sweph/jsastro/astro-server.js
- *         launched by /home/u970630969/sweph/jsastro/start-server.sh
- *         heartbeat: hPanel cron every 5 minutes runs start-server.sh
+ * Daemon: scripts/jsastro/astro-server.js (deployed to a private path on the
+ *         server, outside the web root); launched by start-server.sh in the
+ *         same directory. Heartbeat: hPanel cron runs start-server.sh every
+ *         5 minutes (idempotent — no-op if /health responds).
  *
  * Why daemon over proc_open: Hostinger LVE memory cap on PHP-FPM workers
  * causes WASM init to OOM when Node is spawned as a child. Long-running

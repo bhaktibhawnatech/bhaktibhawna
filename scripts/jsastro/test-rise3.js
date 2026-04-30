@@ -2,9 +2,15 @@
 //  (A) rise_trans_true_hor with realistic atmospheric pressure/temp
 //  (B) iterative root-finding using Sun's altitude (works because calc_ut works)
 import SwissEph from "swisseph-wasm";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EPHE_PATH = process.env.SWEPH_EPHE_PATH || resolve(__dirname, "../src/ephe");
+
 const swe = new SwissEph();
 await swe.initSwissEph();
-swe.set_ephe_path("/home/u970630969/sweph/src/ephe");
+swe.set_ephe_path(EPHE_PATH);
 
 const LAT = 28.6139, LNG = 77.2090, ALT_M = 216;  // Delhi elevation 216m
 const jdStart = 2461157.27;  // 2026-04-26 18:30 UT = 2026-04-27 00:00 IST
